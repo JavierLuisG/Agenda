@@ -17,6 +17,8 @@ public class VentanaContactos extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         setTitle("Contactos");
         setSize(530, 380);
+        // no modificar tamaño inicial
+        setResizable(false);
     }
     private void cargarModeloTabla() {
         model.addColumn("Nombre");

@@ -12,6 +12,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Agenda");
         setSize(530,380);
+        // no modificar tamaño inicial
+        setResizable(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
