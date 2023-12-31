@@ -2,13 +2,16 @@
 package ventanas;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
+    
+    String nombre;
+    String correo;
+    String celular;
 
     public VentanaPrincipal() {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Agenda");
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,6 +63,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -153,6 +161,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        Archivo archivo = new Archivo();
+        archivo.crearArchivo();
+        // obtener los datos ingresados en las cajas de texto
+        nombre = cajaNombre.getText();
+        correo = cajaCorreo.getText();
+        celular = cajaCelular.getText();
+        // crear persona con los valores de los datos ingresados
+        Persona persona = new Persona(nombre, correo, celular);
+        // agregar los datos al archivo .txt de la persona creada 
+        archivo.escribirTexto(persona);
+        // vaciar las cajas 
+        cajaNombre.setText("");
+        cajaCorreo.setText("");
+        cajaCelular.setText("");                
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     public static void main(String args[]) {
         

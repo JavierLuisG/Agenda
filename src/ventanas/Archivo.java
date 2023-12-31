@@ -23,13 +23,13 @@ public class Archivo {
     }
     public void escribirTexto(Persona p) {
         try {
-            FileWriter escribir = new FileWriter(archivo);
+            // importante: agregar true para que se añada y no se sobreescriban los datos ingresados 
+            FileWriter escribir = new FileWriter(archivo, true);
             // signo % separa los valores de las variables
             escribir.write(p.getNombre() + "%" + p.getCorreo() + "%" + p.getCelular() + "\n");
             escribir.close();
         } catch (IOException ex) {
             System.err.println("Error, no pudo escribirse en el archivo");
-        }
-            
-    }
+        }            
+    }    
 }
