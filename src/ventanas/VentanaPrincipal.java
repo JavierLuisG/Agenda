@@ -52,13 +52,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setText("Correo:");
 
-        cajaCorreo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Celular:");
-
-        cajaCelular.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         btnGuardar.setBackground(new java.awt.Color(107, 191, 220));
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
