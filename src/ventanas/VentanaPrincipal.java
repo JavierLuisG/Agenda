@@ -197,9 +197,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void mostrarContactosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarContactosActionPerformed
         VentanaContactos ventana = new VentanaContactos(this, true);
         ventana.setVisible(true);
-               
     }//GEN-LAST:event_mostrarContactosActionPerformed
-
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -208,7 +206,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton btnGuardar;

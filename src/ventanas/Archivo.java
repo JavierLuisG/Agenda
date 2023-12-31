@@ -4,21 +4,18 @@ package ventanas;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Archivo {
     private File archivo;
     
     public void crearArchivo() {
-        archivo = new File("contactos.txt");
-        
+        archivo = new File("contactos.txt");        
         try {
             if (archivo.createNewFile()) {
                 System.out.println("Archivo creado");
             }
         } catch (IOException ex) {
-            System.err.println("Error: " + ex);
+            System.err.println("Error, no se pudo crear el archivo: " + ex);
         }
     }
     public void escribirTexto(Persona p) {
@@ -29,7 +26,7 @@ public class Archivo {
             escribir.write(p.getNombre() + "%" + p.getCorreo() + "%" + p.getCelular() + "\n");
             escribir.close();
         } catch (IOException ex) {
-            System.err.println("Error, no pudo escribirse en el archivo");
+            System.err.println("Error, no pudo escribirse en el archivo: " + ex);
         }            
     }    
 }

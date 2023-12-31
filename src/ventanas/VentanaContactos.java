@@ -1,10 +1,13 @@
-
 package ventanas;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaContactos extends javax.swing.JDialog {
-    
+
     DefaultTableModel model = new DefaultTableModel();
 
     public VentanaContactos(java.awt.Frame parent, boolean modal) {
@@ -13,15 +16,35 @@ public class VentanaContactos extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Contactos");
-        setSize(530,380);
+        setSize(530, 380);
     }
     private void cargarModeloTabla() {
         model.addColumn("Nombre");
         model.addColumn("Correo");
         model.addColumn("Celular");
-        
+        leerTexto();
     }
-
+    private void leerTexto() {
+        FileReader lector;
+        String cadena;
+        // arreglo para que cada columna tenga su valor correspondiente en la fila
+        String fila[];
+        try {
+            lector = new FileReader("contactos.txt");
+            BufferedReader leer = new BufferedReader(lector);
+            cadena = leer.readLine();
+            while (cadena != null) {
+                // split("%") va a cortar cuando se presente ese caracter y asi se guardaran en el arreglo
+                fila = cadena.split("%");
+                model.addRow(fila);
+                cadena = leer.readLine();
+            }            
+        } catch (FileNotFoundException ex) {
+            System.err.println("Error, no se pudo leer texto del .txt " + ex);
+        } catch (IOException ex) {
+            System.err.println("Error, no se pudo leer la linea de text: " + ex);        
+        } 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -103,9 +126,7 @@ public class VentanaContactos extends javax.swing.JDialog {
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
-    
     public static void main(String args[]) {
-    
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 VentanaContactos dialog = new VentanaContactos(new javax.swing.JFrame(), true);
@@ -119,7 +140,6 @@ public class VentanaContactos extends javax.swing.JDialog {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
